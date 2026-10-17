@@ -19,12 +19,15 @@ jobs:
         java-version: '8'
         distribution: 'zulu'
 
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+
     - name: Build Mod with Gradle
       run: |
         if [ -d "./MevdZClient" ]; then
           cd ./MevdZClient
         fi
-        gradle setupDecompWorkspace build --no-daemon
+        gradle build --no-daemon
 
     - name: Upload Mod Jar
       uses: actions/upload-artifact@v4

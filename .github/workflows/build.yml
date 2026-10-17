@@ -30,10 +30,12 @@ jobs:
         if [ -d "./MevdZClient" ]; then
           cd ./MevdZClient
         fi
-        gradle build --no-daemon
+        gradle jar --no-daemon
 
     - name: Upload Mod Jar
       uses: actions/upload-artifact@v4
       with:
         name: MevdZClient-Mod-Jar
-        path: '**/*.jar'
+        path: |
+          build/libs/*.jar
+          MevdZClient/build/libs/*.jar

@@ -25,7 +25,7 @@ jobs:
         unzip -q gradle-2.14.1-bin.zip
         echo "$GITHUB_WORKSPACE/gradle-2.14.1/bin" >> $GITHUB_PATH
 
-    - name: Build Mod with Gradle 2.14.1
+    - name: Build Mod with Gradle
       run: |
         if [ -d "./MevdZClient" ]; then
           cd ./MevdZClient
@@ -36,6 +36,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: MevdZClient-Mod-Jar
-        path: |
-          build/libs/*.jar
-          MevdZClient/build/libs/*.jar
+        path: '**/*.jar'

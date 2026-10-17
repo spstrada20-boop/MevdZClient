@@ -1,0 +1,32 @@
+MevdZ Client (Forge 1.8.9) - Derleme Rehberi
+=============================================
+Bu klasorde sadece mod'un KAYNAK KODU var (src/). Jar dosyasina cevirmek icin
+hazir bir 1.8.9 Forge sablonu kullaniyoruz, boylece Gradle ayarlariyla ugrasmazsin.
+
+Gerekenler (hepsi ucretsiz):
+  - JDK 17 ve JDK 8   -> https://adoptium.net/temurin/releases  (ikisini de kur)
+  - IntelliJ IDEA Community -> jetbrains.com/idea
+
+Adimlar:
+ 1. Sablonu indir: github.com/nea89o/Forge1.8.9Template (Code > Download ZIP), klasore cikar.
+    (Rehberi README'sinde var; "tutorial" dalini kullanmak en kolayi.)
+ 2. Sablonda build.gradle.kts icinde:  baseGroup = "dev.mevdz.client"  ve  modid = "mevdzclient"
+    settings.gradle.kts icinde:       rootProject.name = "MevdZClient"
+ 3. Sablonun src/main/java altindaki ornek paketi (com.example ...) ve mixin ile ilgili
+    her seyi SIL. Mixin kullanmiyoruz; build.gradle.kts'teki mixin satirlarini da sil.
+ 4. Bu klasordeki  src/main/java/dev/mevdz/client/*.java  dosyalarini sablondaki
+    src/main/java/dev/mevdz/client/ icine kopyala.
+    src/main/resources/mcmod.info dosyasini da sablonun resources klasorune kopyala.
+ 5. IntelliJ ile sablon klasorunu ac. Gradle JVM = JDK 17, Project SDK = JDK 8 sec.
+ 6. Gradle sekmesinde:  Tasks > build > build   calistir.
+ 7. Cikan dosya:  build/libs/MevdZClient-....jar   ("build/badjars" icindekiler CALISMAZ, onlari alma)
+ 8. Bu jar'i "MevdZ Launcher.pyw" dosyasinin yanina koy (ya da %APPDATA%\.mevdz klasorune).
+    Launcher 1.8.9 + "MevdZ Client modu" secili iken Forge'u ve mod'u kendisi kurar.
+
+Oyun ici kullanim:
+  Sag Shift  -> MevdZ ayar ekrani (HUD'u fareyle surukle, renk/boyut/arka plan/gokkusagi)
+  G          -> otomatik kosu ac/kapat (Controls menusunden degistirilebilir)
+Ayarlar: .mevdz\game\config\mevdz_client.properties dosyasina kaydedilir.
+
+Not: Kod gercek bir 1.8.9 ortaminda derlenip test EDILMEDI. Derleme hatasi alirsan
+hata mesajini aynen gonder, duzeltirim.

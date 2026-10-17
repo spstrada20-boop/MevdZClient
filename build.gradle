@@ -32,6 +32,13 @@ repositories {
 dependencies {
 }
 
+task customJar(type: Jar) {
+    from sourceSets.main.output
+    archiveName = "MevdZClient-1.8.9.jar"
+}
+
+build.dependsOn customJar
+
 processResources {
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version

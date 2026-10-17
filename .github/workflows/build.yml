@@ -13,21 +13,26 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
 
-    - name: Set up JDK 8
+    - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
-        java-version: '8'
+        java-version: '17'
         distribution: 'temurin'
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
 
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: |
+        if [ -d "./MevdZClient" ]; then cd ./MevdZClient; fi
+        chmod +x gradlew
       continue-on-error: true
 
     - name: Build with Gradle
       run: |
+        if [ -d "./MevdZClient" ]; then
+          cd ./MevdZClient
+        fi
         if [ -f "./gradlew" ]; then
           ./gradlew build --no-daemon
         else
@@ -38,4 +43,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: MevdZClient-Mod-Jar
-        path: build/libs/*.jar
+        path: |
+          build/libs/*.jar
+          MevdZClient/build/libs/*.jar
